@@ -422,6 +422,7 @@ pub enum ImageFilter {
     /// Label in the form of `label=key=val`.
     Label(String, String),
     Since(ImageName),
+    Ancestor(ImageName),
 }
 
 impl Filter for ImageFilter {
@@ -433,6 +434,7 @@ impl Filter for ImageFilter {
             LabelKey(n) => ("label", n.to_owned()),
             Label(n, v) => ("label", format!("{}={}", n, v)),
             Since(name) => ("since", name.to_string()),
+            Ancestor(name) => ("ancestor", name.to_string()),
         }
     }
 }
